@@ -1,10 +1,7 @@
-import java.time.Instant;
 import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Main {
-    private static LocalDate LocaleDate;
-
     public static void start() {
         space();
         boolean isAlive = true;
