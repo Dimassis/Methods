@@ -14,7 +14,7 @@ public class Main {
                 case "1":
                     space();
                     System.out.println("Задача 1:");
-                    task1();
+                    leapYear();
                     break;
                 case "2":
                     space();
@@ -24,19 +24,19 @@ public class Main {
                     int yourSystem = scanner.nextInt();
                     System.out.print("Введите год вашего устройства: ");
                     int yourYear = scanner.nextInt();
-                    task2(yourSystem, yourYear);
+                    checkOS(yourSystem, yourYear);
                     break;
                 case "3":
                     space();
                     System.out.println("Задача 3");
                     System.out.print("Введите количество км до вашего адреса: ");
                     int value = scanner.nextInt();
-                    if(task3(value) == 1) {
-                        System.out.println("Доставка в пределах 20 км занимает дней: " +  task3(value));
-                    } else if (task3(value) == 2) {
-                        System.out.println("Доставка в пределах от 20 км до 60 км км занимает дней: " +  task3(value));
-                    } else if (task3(value) == 3) {
-                        System.out.println("Доставка в пределах 60 км до 100 км занимает дней: " +  task3(value));
+                    if(checkDistance(value) == 1) {
+                        System.out.println("Доставка в пределах 20 км занимает дней: " +  checkDistance(value));
+                    } else if (checkDistance(value) == 2) {
+                        System.out.println("Доставка в пределах от 20 км до 60 км км занимает дней: " +  checkDistance(value));
+                    } else if (checkDistance(value) == 3) {
+                        System.out.println("Доставка в пределах 60 км до 100 км занимает дней: " +  checkDistance(value));
                     } else {
                         System.out.println("Доставка в пределах 100 км невозможна");
                     }
@@ -46,16 +46,15 @@ public class Main {
                     isAlive = false;
                     break;
                 default:
-                    System.out.println("Вы ввели неверное значение");
                     space();
-                    break;
+                    throw new RuntimeException("Вы ввели неверное значение");
             }
         }
     }
     public static void space() {
         System.out.println("*******************************************************");
     }
-    public static void task1() {
+    public static void leapYear() {
        Scanner sc = new Scanner(System.in);
        System.out.println("Проверка года на високосный");
        System.out.print("Введите год: ");
@@ -68,7 +67,7 @@ public class Main {
         space();
     }
 
-    public static void task2(int osSystem, int yearDevice) {
+    public static void checkOS(int osSystem, int yearDevice) {
         int currentYear = LocalDate.now().getYear();
         if (osSystem== 1 &&  yearDevice == currentYear) {
             System.out.println("Установите версию приложения для Android по ссылке");
@@ -80,7 +79,7 @@ public class Main {
         space();
     }
 
-    public static int task3(int deliveryDistance) {
+    public static int checkDistance(int deliveryDistance) {
         if(deliveryDistance <= 20) {
             return 1;
         } else if (deliveryDistance <= 60) {
